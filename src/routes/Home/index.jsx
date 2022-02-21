@@ -1,9 +1,10 @@
-import axios from 'axios'
-import React, { useState } from 'react'
-import Detail from '../../components/Detail'
+import axios from "axios"
+import React, { useState } from "react"
+import Departments from "../../components/Departments"
+import Detail from "../../components/Detail"
 
 function Home() {
-  const [text, setText] = useState('')
+  const [text, setText] = useState("")
   const [res, setRes] = useState()
   const [res2, setRes2] = useState()
   const onChange = (e) => {
@@ -13,7 +14,7 @@ function Home() {
   const onSubmit = async (e) => {
     e.preventDefault()
     const { data } = await axios.get(
-      'https://saramserver.herokuapp.com/saram/42385059'
+      "https://saramserver.herokuapp.com/saram/42385059"
     )
     setRes(data)
   }
@@ -21,8 +22,8 @@ function Home() {
   const onSubmit2 = async (e) => {
     e.preventDefault()
     const { data } = await axios.post(
-      'https://saramserver.herokuapp.com/saram',
-      { keywords: '패스트파이브', loc_cd: '101010' }
+      "https://saramserver.herokuapp.com/saram",
+      { keywords: "패스트파이브", loc_cd: "101010" }
     )
     setRes2(data)
   }
@@ -41,6 +42,7 @@ function Home() {
         <input type="text" value={text} onChange={onChange} />
         <button type="submit">검색2</button>
       </form>
+      <Departments />
       {res && <Detail data={res} />}
     </>
   )
