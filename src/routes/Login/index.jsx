@@ -6,6 +6,7 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault()
+    localStorage.setItem('user', true)
     navigate('/')
   }
 
