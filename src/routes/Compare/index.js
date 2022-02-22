@@ -76,8 +76,8 @@ const URL = ({ item }) => {
 };
 
 const Compare = () => {
-  const { compList } = useSelector(state => state.comp);
-  const [text, setText] = useState("");
+  const { compList, compListName } = useSelector(state => state.comp);
+  const [text, setText] = useState(compListName);
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
