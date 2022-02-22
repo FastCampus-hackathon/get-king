@@ -14,7 +14,7 @@ export const Head = styled.div`
     div {
       img {
         position: relative;
-        top: 29px;
+        top: 11px;
         width: 15px;
         height: 15px;
         display: block;
