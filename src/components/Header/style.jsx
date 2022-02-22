@@ -43,6 +43,7 @@ export const Head = styled.div`
       text-decoration: none;
       display: block;
       padding-right: 8px;
+      cursor: pointer;
     }
   }
 
