@@ -25,30 +25,31 @@ export default Cart;
 
 const HI = styled.div`
   position: fixed;
-  bottom: 130px;
-  left: 30px;
+  top: 75px;
+  right: 25px;
   color: #4876ef;
   font-weight: 700;
   padding: 4px 8px;
   border-radius: 15px;
+  font-size: 14px;
 `;
 
 const ICON = styled.div`
   position: fixed;
-  bottom: 30px;
-  left: 30px;
+  top: 100px;
+  right: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #4876ef;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   cursor: pointer;
 
   img {
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
   }
 `;
