@@ -4,6 +4,7 @@ import SideBar from "../../components/SideBar";
 import Search from "../../components/Search";
 import styled from "styled-components";
 import Header from "../../components/Header";
+import Cart from "../../components/Cart";
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
         <Search />
         <Departments />
         <SideBar />
+        <Cart />
       </Container>
     </>
   );

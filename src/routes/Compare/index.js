@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import mark from "../../static/icons/mark.svg";
 import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const CompanyName = ({ item }) => {
   return <div style={{ fontSize: "16px" }}>{item.company.detail.name}</div>;
@@ -131,12 +132,16 @@ const Compare = () => {
     setArr(compList.map(el => el.id));
   }, [compList]);
 
+  const navigate = useNavigate();
+
   const createSet = async () => {
     compList.length === 3 &&
       (await axios.post("https://saramserver.herokuapp.com/set/create", {
         name: text,
         ids: arr,
       }));
+
+    navigate("/compare-list");
   };
 
   const handleChange = e => {
