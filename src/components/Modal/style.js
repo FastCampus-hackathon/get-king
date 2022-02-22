@@ -70,11 +70,16 @@ export const ContentsWrapper = styled.div`
   }
   .guide {
     display: block;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    border: 1px solid ${({ theme }) => theme.colors.lightBlue};
     font-size: 14px;
     margin-top: 4px;
   }
   .sub-message {
     display: block;
+    font-size: 12px;
     color: ${({ theme }) => theme.colors.gray2};
     margin-top: 20px;
   }
