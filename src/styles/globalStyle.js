@@ -16,9 +16,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Pretendard', sans-serif;
     width: 100%;
-    line-height: ${({theme}) => theme.lineHeights.lineHeight};
-    letter-spacing: ${({theme}) => theme.letterSpacings.letterSpacing};
+    line-height: ${({ theme }) => theme.lineHeights.lineHeight};
+    letter-spacing: ${({ theme }) => theme.letterSpacings.letterSpacing};
     color: ${({ theme }) => theme.colors.primary};
+   
   }
   h1 {
     margin: 0;

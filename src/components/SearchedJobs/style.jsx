@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SearchedList = styled.ul`
   border-bottom: 1px solid #141414;
-  width: 865px;
+  width: 100%;
 
   li {
     width: 865px;
