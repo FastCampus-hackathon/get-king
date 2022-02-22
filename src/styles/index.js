@@ -31,6 +31,7 @@ const letterSpacings = {
 
 const colors = {
   primary: "#000000",
+  gray1: "#383838",
   gray2: "#8A8A8A",
   gray3: "#C4C4C4",
   gray4: "#F7F7F7",
