@@ -2,6 +2,7 @@ import axios from "axios"
 import React, { useState } from "react"
 import Departments from "../../components/Departments"
 import Detail from "../../components/Detail"
+import SideBar from "../../components/SideBar"
 
 function Home() {
   const [text, setText] = useState("")
@@ -44,6 +45,7 @@ function Home() {
       </form>
       <Departments />
       {res && <Detail data={res} />}
+      <SideBar />
     </>
   )
 }
