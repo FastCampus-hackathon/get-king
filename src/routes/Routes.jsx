@@ -5,6 +5,7 @@ import Home from './Home'
 import Header from '../components/Header'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../styles'
+import CompareList from './CompareList'
 import GlobalStyle from '../styles/globalStyle'
 
 const Router = () => {
@@ -16,6 +17,7 @@ const Router = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/compare-list" element={<CompareList />} />
           </Routes>
           <GlobalStyle />
         </ThemeProvider>
