@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import Departments from "../../components/Departments"
 import Detail from "../../components/Detail"
 import SideBar from "../../components/SideBar"
+import styled from "styled-components"
 
 function Home() {
   const [text, setText] = useState("")
@@ -33,7 +34,7 @@ function Home() {
   console.log(res2)
 
   return (
-    <>
+    <Container>
       <form onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onChange} />
         <button type="submit">검색</button>
@@ -45,9 +46,38 @@ function Home() {
       </form>
       <Departments />
       {res && <Detail data={res} />}
+      <div className="wrap">
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+        <div className="search-result">아싸라비아 콜롬버스</div>
+      </div>
+     
       <SideBar />
-    </>
+    </Container>
   )
 }
 
 export default Home
+
+const Container = styled.div`
+  max-width: 1160px;
+  position: relative;
+
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    
+    .search-result {
+      display: block;
+      height: 92px;
+    }
+  }
+  
+`

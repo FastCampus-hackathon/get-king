@@ -14,7 +14,7 @@ const List = () => {
   const handleText = (e) => {
     setText(e.target.value)
   }
-  
+
   return  (
     <li>
       <div className='header'>
@@ -60,6 +60,9 @@ const SideBar = () => {
 export default SideBar;
 
 const Container = styled.div`
+  position: fixed;
+  top: 107px;
+  right: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,5 +173,13 @@ const Container = styled.div`
         background-color: ${({theme}) => theme.colors.blue};
       }
     }
+  }
+
+  @media (min-height: 800px) {
+    top: 127px;
+  }
+
+  @media (min-height: 900px) {
+    top: 147px;
   }
 `
