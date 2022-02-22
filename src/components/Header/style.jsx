@@ -10,10 +10,20 @@ export const Head = styled.div`
   border-bottom: 1px solid #f7f7f7;
 
   div {
+    strong {
+      display: block;
+      margin-right: 8px;
+      width: 22px;
+      height: 22px;
+      img {
+        position: relative;
+        top: 1px;
+        display: block;
+      }
+    }
     display: flex;
     img {
       position: relative;
-      bottom: 4px;
     }
     div {
       img {
@@ -27,6 +37,8 @@ export const Head = styled.div`
     }
 
     a {
+      position: relative;
+      top: 4px;
       color: inherit;
       text-decoration: none;
       display: block;

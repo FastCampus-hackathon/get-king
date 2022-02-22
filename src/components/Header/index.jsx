@@ -2,6 +2,7 @@ import React from 'react'
 import { Head } from './style'
 import logo from '../../static/icons/logo.svg'
 import bell from '../../static/icons/bell.svg'
+import avatar from '../../static/images/avatar.jpg'
 
 function Header() {
   return (
@@ -22,7 +23,13 @@ function Header() {
       </div>
 
       <div>
-        <a href="/login">로그인</a>
+        {localStorage.getItem('user') !== 'true' ? (
+          <a href="/login">로그인</a>
+        ) : (
+          <strong>
+            <img src={avatar} alt="" />
+          </strong>
+        )}
         <img src={bell} alt="알림" />
       </div>
     </Head>
