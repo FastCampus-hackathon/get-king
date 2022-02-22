@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Head = styled.div`
   font-size: 16px;
@@ -36,7 +36,7 @@ export const Head = styled.div`
       }
     }
 
-    a {
+    p {
       position: relative;
       top: 4px;
       color: inherit;
@@ -62,4 +62,4 @@ export const Head = styled.div`
       }
     }
   }
-`
+`;
