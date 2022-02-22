@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const JobsList = styled.ul`
+export const JobList = styled.ul`
   border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
