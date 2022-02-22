@@ -7,7 +7,7 @@ import plus from "../../static/icons/plus.svg";
 import axios from "axios";
 import { Modal } from "../Modal";
 import { useDispatch } from "react-redux";
-import { deleteCompItem, updateMemo } from "../../reducers/comp";
+import { deleteCompItem } from "../../reducers/comp";
 import { useNavigate } from "react-router-dom";
 
 function getList(compList) {
@@ -53,21 +53,18 @@ const DefaultList = () => {
 };
 
 const List = ({ item }) => {
-  const { text } = useSelector(state => state.comp);
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   const handleText = useCallback(
     async e => {
-      dispatch(updateMemo(e.target.value));
+      setText(e.target.value);
+      axios.post(`https://saramserver.herokuapp.com/memo/${item.id}`, {
+        text,
+      });
     },
-    [text]
+    [item, text]
   );
-
-  useEffect(() => {
-    axios.post(`https://saramserver.herokuapp.com/memo/${item.id}`, {
-      text: text,
-    });
-  }, [text, item]);
 
   const deleteComp = () => {
     dispatch(deleteCompItem(item));
@@ -75,15 +72,12 @@ const List = ({ item }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
-        `https://saramserver.herokuapp.com/memo/${item.id}`
-      );
-
-      dispatch(updateMemo(response.data.text));
+      await axios
+        .get(`https://saramserver.herokuapp.com/memo/${item.id}`)
+        .then(res => setText(res.data.text));
     }
-
     fetchData();
-  }, []);
+  }, [text, item]);
 
   return (
     <li>
