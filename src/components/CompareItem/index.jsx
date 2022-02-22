@@ -1,23 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import check from "../../static/icons/checked.svg";
 import unchecked from "../../static/icons/unchecked.svg";
+import {
+  resetCompItem,
+  addCompItem,
+  addCompItemName,
+} from "../../reducers/comp";
+import { useDispatch } from "react-redux";
 
 function CompareItem({ el, i, onChoice, checked }) {
-  const [names, setNames] = useState([]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const getName = async id => {
+  const onClick = async () => {
+    dispatch(resetCompItem());
+    el.ids.map(async el => {
       const { data } = await axios.get(
-        `https://saramserver.herokuapp.com/saram/${id}`
+        `https://saramserver.herokuapp.com/saram/${el.id}`
       );
-      setNames([...names, data.jobs.job[0].company.detail.name]);
-    };
 
-    el.ids.map(el => getName(el));
-  }, []);
-
-  console.log(names);
+      dispatch(addCompItem(data.jobs.job[0]));
+    });
+    dispatch(addCompItemName(el.name));
+    navigate("/compare");
+  };
 
   return (
     <tr>
@@ -32,10 +40,10 @@ function CompareItem({ el, i, onChoice, checked }) {
         </div>
       </td>
       <td>{i + 1}</td>
-      <td>{el.name}</td>
-      <td>{names[0]}</td>
-      <td>{names[1]}</td>
-      <td>{names[2]}</td>
+      <td onClick={onClick}>{el.name}</td>
+      <td>{el.ids[0]?.name}</td>
+      <td>{el.ids[1]?.name}</td>
+      <td>{el.ids[2]?.name}</td>
     </tr>
   );
 }
