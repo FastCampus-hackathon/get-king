@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { SearchEngine } from './style'
 import search from '../../static/icons/search.svg'
+import axios from 'axios'
 
 function Search() {
   const [text, setText] = useState('')
@@ -8,9 +9,14 @@ function Search() {
     setText(e.target.value)
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(text)
+    const {
+      data: {
+        jobs: { job },
+      },
+    } = await axios.get(`https://saramserver.herokuapp.com/saram/job/${text}`)
+    console.log(job)
   }
 
   return (
