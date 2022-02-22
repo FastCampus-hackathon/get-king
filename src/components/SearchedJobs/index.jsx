@@ -5,7 +5,7 @@ import { SearchedList } from "./style";
 import { useSelector } from "react-redux";
 import picked from "../../static/icons/picked.svg";
 import styled from "styled-components";
-
+import bell from "../../static/icons/bell.svg";
 import unpicked from "../../static/icons/unpicked.png";
 import { useDispatch } from "react-redux";
 import { addCompItem } from "../../reducers/comp";
@@ -14,14 +14,24 @@ const SearchedJobs = () => {
   const [pickedList, setPickedList] = useState([]);
   const jobsData = useSelector(state => state.announcement.announcement);
 
-  console.log("잡데이터: ", jobsData);
   dayjs.locale("ko");
   const dispatch = useDispatch();
   const { compList } = useSelector(state => state.comp);
-  console.log(compList);
 
   return (
     <>
+      <Container>
+        <div className="left">
+          <img src={bell} alt="scrap" />
+          <strong>스크랩 모아보기</strong>
+        </div>
+
+        <div className="right">
+          <select name="sort" id="sort">
+            <option value="date">마감일순</option>
+          </select>
+        </div>
+      </Container>
       <SearchedList>
         {jobsData &&
           jobsData.map((job, index) => {
@@ -63,6 +73,10 @@ const SearchedJobs = () => {
                       onClick={() => handleClick(job)}
                       alt="icon"
                     />
+                    <div className="loc">
+                      <h4>{job.position["job-type"].name}</h4>
+                      <h4>{a[a.length - 1].replace("&gt;", "/")}</h4>
+                    </div>
                   </div>
                 </div>
               </li>
