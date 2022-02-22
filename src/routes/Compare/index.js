@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import mark from "../../static/icons/mark.svg";
 
 const CompanyName = ({ item }) => {
   return <div style={{ fontSize: "16px" }}>{item.company.detail.name}</div>;
@@ -76,6 +77,51 @@ const URL = ({ item }) => {
 };
 
 const Compare = () => {
+  const [name, setName] = useState(false);
+  const [job, setJob] = useState(false);
+  const [ind, setInd] = useState(false);
+  const [exp, setExp] = useState(false);
+  const [loc, setLoc] = useState(false);
+  const [date, setDate] = useState(false);
+  const [sal, setSal] = useState(false);
+  const [memo, setMemo] = useState(false);
+  const [url, setUrl] = useState(false);
+
+  const changeName = () => {
+    setName(!name);
+  };
+
+  const changeJob = () => {
+    setJob(!job);
+  };
+
+  const changeInd = () => {
+    setInd(!ind);
+  };
+
+  const changeExp = () => {
+    setExp(!exp);
+  };
+  const changeLoc = () => {
+    setLoc(!loc);
+  };
+
+  const changeDate = () => {
+    setDate(!date);
+  };
+
+  const changeSal = () => {
+    setSal(!sal);
+  };
+
+  const changeMemo = () => {
+    setMemo(!memo);
+  };
+
+  const changeUrl = () => {
+    setUrl(!url);
+  };
+
   const { compList, compListName } = useSelector(state => state.comp);
   const [text, setText] = useState(compListName);
   const [arr, setArr] = useState([]);
@@ -98,19 +144,29 @@ const Compare = () => {
   return (
     <Container>
       <div className="header">
-        <input
-          type="text"
-          placeholder="제목을 입력해주세요"
-          value={text}
-          onChange={handleChange}
-        />
+        <h2>공고항목별 비교</h2>
         <button onClick={createSet}>저장하기</button>
       </div>
+
       <div className="content">
         <div className="name">
           <div className="title">
+            <input
+              type="text"
+              placeholder="제목을 입력해주세요"
+              value={text}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="name">
+          <div
+            className={name ? "title clicked" : "title"}
+            onClick={changeName}
+          >
             <h3>기업명</h3>
-            <span>homepage</span>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -141,8 +197,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={job ? "title clicked" : "title"} onClick={changeJob}>
             <h3>직무</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -173,8 +230,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={ind ? "title clicked" : "title"} onClick={changeInd}>
             <h3>산업분야</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -205,8 +263,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={exp ? "title clicked" : "title"} onClick={changeExp}>
             <h3>경력조건</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -237,8 +296,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={loc ? "title clicked" : "title"} onClick={changeLoc}>
             <h3>지역</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -269,8 +329,12 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div
+            className={date ? "title clicked" : "title"}
+            onClick={changeDate}
+          >
             <h3>마감일</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -301,8 +365,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={sal ? "title clicked" : "title"} onClick={changeSal}>
             <h3>연봉</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -333,8 +398,12 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div
+            className={memo ? "title clicked" : "title"}
+            onClick={changeMemo}
+          >
             <h3>메모</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -365,8 +434,9 @@ const Compare = () => {
         </div>
 
         <div className="name">
-          <div className="title">
+          <div className={url ? "title clicked" : "title"} onClick={changeUrl}>
             <h3>상세 페이지</h3>
+            <img src={mark} alt="icon" />
           </div>
           <div className="comp">
             {compList.length === 3 ? (
@@ -412,11 +482,9 @@ const Container = styled.div`
     height: 32px;
     margin-bottom: 24px;
 
-    input {
-      width: 360px;
+    h2 {
       font-size: 20px;
-      line-height: 1.3;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     button {
@@ -441,13 +509,48 @@ const Container = styled.div`
 
     .name {
       width: 100%;
+
+      input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        margin-left: 30px;
+        height: 50px;
+        font-size: 20px;
+        line-height: 1.3;
+        font-weight: 600;
+      }
+
       .title {
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 60px;
-        background-color: ${({ theme }) => theme.colors.lightBlue};
+        background-color: ${({ theme }) => theme.colors.gray4};
+
+        &.clicked {
+          background-color: ${({ theme }) => theme.colors.lightGreen};
+
+          &:hover {
+            img {
+              display: none;
+            }
+          }
+        }
+
+        h3 {
+          margin-right: 10px;
+        }
+        img {
+          display: none;
+        }
+
+        &:hover {
+          img {
+            display: block;
+          }
+        }
 
         span {
           display: block;
@@ -457,12 +560,12 @@ const Container = styled.div`
       .comp {
         display: flex;
         width: 100%;
+        height: 70px;
 
         div {
           display: flex;
-          justify-content: center;
           align-items: center;
-          height: 70px;
+          padding: 0 32px;
           flex: 1;
 
           &.url {
