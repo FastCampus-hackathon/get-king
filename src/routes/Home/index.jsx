@@ -1,26 +1,12 @@
 import React from "react"
 import Departments from "../../components/Departments"
 import SideBar from "../../components/SideBar"
-import Search from '../../components/Search'
+import Search from "../../components/Search"
 import styled from "styled-components"
 
 function Home() {
   return (
     <Container>
-      <Departments />
-      <div className="wrap">
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-        <div className="search-result">아싸라비아 콜롬버스</div>
-      </div>
-     
       <Search />
       <Departments />
       <SideBar />
@@ -37,7 +23,7 @@ const Container = styled.div`
   .wrap {
     display: flex;
     flex-direction: column;
-    
+
     .search-result {
       display: block;
       height: 92px;
