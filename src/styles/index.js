@@ -4,7 +4,7 @@ const breakpoints = {
 };
 
 const fontFamilies = {
-  main: "font-family: 'Pretendard', sans-serif"
+  main: "font-family: 'Pretendard', sans-serif",
 };
 
 const fontSizes = {
@@ -22,11 +22,11 @@ const fontSizes = {
 };
 
 const lineHeights = {
-  lineHeight: 1.3
+  lineHeight: 1.3,
 };
 
 const letterSpacings = {
-  letterSpacing: 0
+  letterSpacing: 0,
 };
 
 const colors = {

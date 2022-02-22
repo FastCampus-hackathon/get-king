@@ -1,21 +1,22 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const SearchedList = styled.ul`
-  margin: 68px;
+  border-bottom: 1px solid #141414;
+  width: 865px;
 
   li {
     width: 865px;
     height: 92px;
     display: flex;
     justify-content: space-between;
+    color: #383838;
     .info_left {
       display: flex;
       flex-direction: column;
       width: 800px;
 
       .company_name {
-        font-size: 16px;
-        color: #383838;
+        font-size: 14px;
         margin-bottom: 4px;
       }
       .flex_wrapper {
@@ -37,10 +38,12 @@ export const SearchedList = styled.ul`
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 300px;
+        font-size: 14px;
+        color: #8a8a8a;
       }
       .job_title {
         display: block;
-        font-size: 20px;
+        font-size: 16px;
         color: #00d3ab;
         font-weight: 600;
         overflow: hidden;
@@ -58,9 +61,20 @@ export const SearchedList = styled.ul`
       h4 + h4 {
         margin-bottom: 4px;
       }
+      div {
+        .dead_line {
+          display: inline-block;
+        }
+        .pick_btn {
+          vertical-align: middle;
+          margin-left: 8px;
+          width: 16px;
+          height: 16px;
+        }
+      }
     }
   }
   li + li {
     margin: 24px 0;
   }
-`
+`;

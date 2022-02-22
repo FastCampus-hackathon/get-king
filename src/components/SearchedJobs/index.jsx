@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import { SearchedList } from "./style";
 import { useSelector } from "react-redux";
+import picked from "../../static/icons/picked.svg";
+import unpicked from "../../static/icons/unpicked.svg";
 
 const SearchedJobs = () => {
+  const [userPicked, setUserPicked] = useState(false);
   const jobsData = useSelector(state => state.announcement.announcement);
   console.log("잡데이터: ", jobsData);
   dayjs.locale("ko");
@@ -12,7 +15,7 @@ const SearchedJobs = () => {
     <SearchedList>
       {jobsData &&
         jobsData.map((job, index) => {
-          const a = job.position.location.name.split(",")
+          const a = job.position.location.name.split(",");
           return (
             <li key={job.id}>
               <div className="info_left">
@@ -27,11 +30,19 @@ const SearchedJobs = () => {
                 <h4 className="job_tag">{job.position["job-code"].name}</h4>
               </div>
               <div className="info_right">
-                <h4>
-                  {dayjs(new Date(job["expiration-timestamp"] * 1000)).format(
-                    "~MM/DD(dd)"
-                  )}
-                </h4>
+                <div>
+                  <h4 className="dead_line">
+                    {dayjs(new Date(job["expiration-timestamp"] * 1000)).format(
+                      "~MM/DD(dd)"
+                    )}
+                  </h4>
+                  <img
+                    className="pick_btn"
+                    src={userPicked ? picked : unpicked}
+                    onClick={() => setUserPicked(prev => !prev)}
+                    alt="icon"
+                  />
+                </div>
                 <h4>{job.position["job-type"].name}</h4>
                 <h4>{a[a.length - 1].replace("&gt;", "/")}</h4>
               </div>

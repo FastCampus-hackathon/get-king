@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const JobList = styled.ul`
   h2 {
@@ -26,4 +26,4 @@ export const JobList = styled.ul`
       color: #4876ef;
     }
   }
-`
+`;

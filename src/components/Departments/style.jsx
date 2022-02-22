@@ -1,6 +1,8 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const DepartmentsList = styled.ul`
+  margin: 68px;
+  border-bottom: 1px solid #141414;
   h2 {
     position: absolute;
     top: 135px;
@@ -27,4 +29,4 @@ export const DepartmentsList = styled.ul`
       color: #4876ef;
     }
   }
-`
+`;
