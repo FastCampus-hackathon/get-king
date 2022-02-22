@@ -11,6 +11,10 @@ export const Head = styled.div`
 
   div {
     display: flex;
+    img {
+      position: relative;
+      bottom: 4px;
+    }
     div {
       img {
         position: relative;
@@ -32,6 +36,7 @@ export const Head = styled.div`
 
   ul {
     display: flex;
+    align-items: center;
     padding: 0;
 
     li {
