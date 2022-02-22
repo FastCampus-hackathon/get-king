@@ -9,6 +9,7 @@ import {
   addCompItemName,
 } from "../../reducers/comp";
 import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
 function CompareItem({ el, i, onChoice, checked }) {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function CompareItem({ el, i, onChoice, checked }) {
   };
 
   return (
-    <tr>
+    <Item>
       <td>
         <div>
           <img
@@ -44,8 +45,43 @@ function CompareItem({ el, i, onChoice, checked }) {
       <td>{el.ids[0]?.name}</td>
       <td>{el.ids[1]?.name}</td>
       <td>{el.ids[2]?.name}</td>
-    </tr>
+    </Item>
   );
 }
 
 export default CompareItem;
+
+const Item = styled.tr`
+  td {
+    text-align: center;
+    height: 37px;
+    &:first-child {
+      width: 40px;
+
+      div {
+        position: relative;
+        top: 4px;
+      }
+    }
+
+    &:nth-child(2) {
+      width: 56px;
+    }
+
+    &:nth-child(3) {
+      width: 630px;
+    }
+
+    &:nth-child(4) {
+      width: 144px;
+    }
+
+    &:nth-child(5) {
+      width: 144px;
+    }
+
+    &:nth-child(6) {
+      width: 144px;
+    }
+  }
+`;
