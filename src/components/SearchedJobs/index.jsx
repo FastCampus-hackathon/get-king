@@ -4,33 +4,39 @@ import "dayjs/locale/ko";
 import { SearchedList } from "./style";
 import { useSelector } from "react-redux";
 import picked from "../../static/icons/picked.svg";
-import unpicked from "../../static/icons/unpicked.svg";
-import bell from "../../static/icons/bell.svg";
 import styled from "styled-components";
 
+import unpicked from "../../static/icons/unpicked.png";
+import { useDispatch } from "react-redux";
+import { addCompItem } from "../../reducers/comp";
+
 const SearchedJobs = () => {
-  const [userPicked, setUserPicked] = useState(false);
+  const [pickedList, setPickedList] = useState([]);
   const jobsData = useSelector(state => state.announcement.announcement);
+
   console.log("잡데이터: ", jobsData);
   dayjs.locale("ko");
+  const dispatch = useDispatch();
+  const { compList } = useSelector(state => state.comp);
+  console.log(compList);
+
   return (
     <>
-      <Container>
-        <div className="left">
-          <img src={bell} alt="scrap" />
-          <strong>스크랩 모아보기</strong>
-        </div>
-
-        <div className="right">
-          <select name="sort" id="sort">
-            <option value="date">마감일순</option>
-          </select>
-        </div>
-      </Container>
       <SearchedList>
         {jobsData &&
           jobsData.map((job, index) => {
+            const handleClick = job => {
+              if (compList.length === 3) {
+                alert("비교는 최대 3개까지 가능합니다.");
+                return;
+              }
+              const newPickedList = [...pickedList, job.id];
+              setPickedList(newPickedList);
+
+              dispatch(addCompItem(job));
+            };
             const a = job.position.location.name.split(",");
+            // dispatchEvent(addItem(job))
             return (
               <li key={job.id}>
                 <div className="info_left">
@@ -53,18 +59,8 @@ const SearchedJobs = () => {
                     </h4>
                     <img
                       className="pick_btn"
-                      src={userPicked ? picked : unpicked}
-                      onClick={() => setUserPicked(prev => !prev)}
-                      alt="icon"
-                    />
-                  </div>
-                  <div className="loc">
-                    <h4>{job.position["job-type"].name}</h4>
-                    <h4>{a[a.length - 1].replace("&gt;", "/")}</h4>
-                    <img
-                      className="pick_btn"
-                      src={bell}
-                      onClick={() => setUserPicked(prev => !prev)}
+                      src={pickedList.includes(job.id) ? picked : unpicked}
+                      onClick={() => handleClick(job)}
                       alt="icon"
                     />
                   </div>
