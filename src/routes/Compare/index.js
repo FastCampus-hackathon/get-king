@@ -1,6 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -67,7 +67,21 @@ const ItemMemo = ({ item }) => {
     fetchData();
   }, [item]);
 
-  return <div style={{ fontSize: "16px" }}>{text}</div>;
+  const handleText = useCallback(
+    async e => {
+      setText(e.target.value);
+      axios.post(`https://saramserver.herokuapp.com/memo/${item.id}`, {
+        text,
+      });
+    },
+    [item, text]
+  );
+
+  return (
+    <div style={{ fontSize: "16px" }}>
+      <input type={text} value={text} onChange={handleText} />
+    </div>
+  );
 };
 
 const URL = ({ item }) => {
@@ -158,7 +172,7 @@ const Compare = () => {
 
         <div className="content">
           <div className="name">
-            <div className="title">
+            <div className="title input">
               <input
                 type="text"
                 placeholder="제목을 입력해주세요"
@@ -545,7 +559,11 @@ const Container = styled.div`
         height: 50px;
         font-size: 20px;
         line-height: 1.3;
-        font-weight: 600;
+        font-weight: 700;
+
+        &::placeholder {
+          color: ${({ theme }) => theme.colors.gray2};
+        }
       }
       .title {
         display: flex;
@@ -553,6 +571,13 @@ const Container = styled.div`
         align-items: center;
         height: 60px;
         background-color: ${({ theme }) => theme.colors.gray4};
+
+        &.input {
+          border: 1px solid ${({ theme }) => theme.colors.gray2};
+          border-radius: 8px;
+          background-color: ${({ theme }) => theme.colors.gray4};
+        }
+
         &.clicked {
           background-color: ${({ theme }) => theme.colors.lightGreen};
           &:hover {
@@ -580,6 +605,18 @@ const Container = styled.div`
         display: flex;
         width: 100%;
         height: 70px;
+
+        input {
+          width: 100%;
+          height: 40px;
+          padding: 0 10px;
+          border-radius: 4px;
+          border: 1px solid ${({ theme }) => theme.colors.lightBlue};
+          font-size: 16px;
+          font-weight: 400;
+          margin: 0;
+        }
+
         div {
           display: flex;
           align-items: center;
