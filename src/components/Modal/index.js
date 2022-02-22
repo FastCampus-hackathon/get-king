@@ -25,6 +25,11 @@ export const Modal = ({
   onClick,
   children,
 }) => {
+  const handleClick = async () => {
+    await onClick();
+    await onClose();
+  };
+
   return open ? (
     <ModalBackGround>
       <ModalBox>
@@ -40,7 +45,7 @@ export const Modal = ({
               닫기
             </button>
           )}
-          <button className="call-btn" onClick={onClick}>
+          <button className="call-btn" onClick={handleClick}>
             {children}
           </button>
         </BtnWrapper>
