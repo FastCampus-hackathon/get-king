@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import picked from "../../static/icons/picked.svg";
 import unpicked from "../../static/icons/unpicked.png";
 import { useDispatch } from "react-redux";
-import { addCompItem } from "../../reducers/comp";
+import { addCompItem, deleteCompItem } from "../../reducers/comp";
 
 const SearchedJobs = () => {
   const [pickedList, setPickedList] = useState([]);
@@ -27,10 +27,17 @@ const SearchedJobs = () => {
               alert("비교는 최대 3개까지 가능합니다.");
               return;
             }
-            const newPickedList = [...pickedList, job.id];
-            setPickedList(newPickedList);
-
-            dispatch(addCompItem(job));
+            if (pickedList.includes(job.id)) {
+              const newPickedList = pickedList.filter(id => {
+                return id !== job.id;
+              });
+              setPickedList(newPickedList);
+              dispatch(deleteCompItem(job));
+            } else {
+              const newPickedList = [...pickedList, job.id];
+              setPickedList(newPickedList);
+              dispatch(addCompItem(job));
+            }
           };
           const a = job.position.location.name.split(",");
           // dispatchEvent(addItem(job))
