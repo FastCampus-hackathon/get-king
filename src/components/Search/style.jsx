@@ -5,8 +5,7 @@ export const SearchEngine = styled.div`
   border: 1px solid #c4c4c4;
   border-radius: 24px;
   vertical-align: middle;
-  margin-top: 50px;
-  margin-left: 60px;
+  margin: 50px 0 8px 60px;
 
   img {
     position: relative;
