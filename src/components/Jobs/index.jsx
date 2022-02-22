@@ -4,6 +4,7 @@ import SearchedJobs from "../SearchedJobs";
 import { JobList } from "./style";
 import { setAnnouncement } from "../../reducers/announcement";
 import { useDispatch } from "react-redux";
+import styled from "styled-components";
 
 const Jobs = () => {
   const dispatch = useDispatch();
@@ -44,22 +45,29 @@ const Jobs = () => {
   };
   return (
     <>
-      <JobList>
-        <h2>IT·개발</h2>
-        <li>
-          <strong>IT개발·데이터</strong>
-        </li>
-        {jobs.map((job, index) => {
-          return (
-            <li key={index} onClick={getJobsByKeyword}>
-              {job}
-            </li>
-          );
-        })}
-      </JobList>
-      <SearchedJobs />
+      <Wrapper>
+        <JobList>
+          <h2>IT·개발</h2>
+          <li>
+            <strong>IT개발·데이터</strong>
+          </li>
+          {jobs.map((job, index) => {
+            return (
+              <li key={index} onClick={getJobsByKeyword}>
+                {job}
+              </li>
+            );
+          })}
+        </JobList>
+        <SearchedJobs />
+      </Wrapper>
     </>
   );
 };
+
+const Wrapper = styled.div`
+  width: 1000px;
+  margin: 0 auto;
+`;
 
 export default Jobs;

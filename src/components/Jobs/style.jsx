@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const JobList = styled.ul`
+  margin: 0 auto;
   h2 {
     position: absolute;
     top: 135px;
