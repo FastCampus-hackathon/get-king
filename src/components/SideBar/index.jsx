@@ -83,7 +83,12 @@ const List = ({ item }) => {
     <li>
       <div className="header">
         <h3 className="company-name">{item.company.detail.name}</h3>
-        <img src={close} alt="close" onClick={deleteComp} />
+        <img
+          src={close}
+          alt="close"
+          onClick={deleteComp}
+          className="close-btn"
+        />
       </div>
       <strong className="job">{item.position["job-mid-code"].name}</strong>
       <div className="info">
@@ -250,6 +255,10 @@ const Container = styled.div`
         }
       }
     }
+  }
+
+  .close-btn {
+    cursor: pointer;
   }
 
   .button-group {

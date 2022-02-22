@@ -31,6 +31,7 @@ export const SearchedList = styled.ul`
         }
         .experience {
           width: 90px;
+          font-size: 14px;
         }
       }
       .job_tag {
@@ -51,7 +52,7 @@ export const SearchedList = styled.ul`
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        width: 350px;
+        width: 400px;
       }
     }
     .info_right {
@@ -59,14 +60,11 @@ export const SearchedList = styled.ul`
       display: flex;
       justify-content: right;
       flex-direction: column;
-      width: 150px;
+      width: 300px;
       h4 + h4 {
         margin-bottom: 4px;
       }
       div {
-        .dead_line {
-          display: inline-block;
-        }
         .pick_btn {
           vertical-align: middle;
           margin-left: 8px;
@@ -92,5 +90,13 @@ export const SearchedList = styled.ul`
   }
   li + li {
     margin: 24px 0;
+  }
+
+  .job_salary {
+    font-size: 14px;
+  }
+
+  .hi {
+    font-size: 14px;
   }
 `;
