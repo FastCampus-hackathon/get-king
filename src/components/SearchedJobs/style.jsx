@@ -11,6 +11,7 @@ export const SearchedList = styled.ul`
     .info_left {
       display: flex;
       flex-direction: column;
+      width: 800px;
 
       .company_name {
         font-size: 16px;
@@ -18,7 +19,7 @@ export const SearchedList = styled.ul`
         margin-bottom: 4px;
       }
       .flex_wrapper {
-        width: 600px;
+        width: 650px;
         display: flex;
         justify-content: space-between;
         margin-bottom: 4px;
