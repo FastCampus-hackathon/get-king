@@ -18,7 +18,7 @@ export const JobList = styled.ul`
   margin-left: 60px;
   margin-bottom: 16px;
   padding: 32px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray2};
+  border-bottom: 1px solid #c4c4c4;
 
   li {
     cursor: pointer;

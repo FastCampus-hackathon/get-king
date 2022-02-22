@@ -72,6 +72,7 @@ export const SearchedList = styled.ul`
           margin-left: 8px;
           width: 20px;
           height: 20px;
+          cursor: pointer;
         }
       }
 

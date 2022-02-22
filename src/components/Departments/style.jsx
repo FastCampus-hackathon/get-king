@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DepartmentsList = styled.ul`
   margin: 68px;
-  border-bottom: 1px solid #141414;
+  border-bottom: 1px solid #c4c4c4;
   h2 {
     position: absolute;
     top: 135px;
