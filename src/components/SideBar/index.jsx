@@ -1,10 +1,14 @@
 import dayjs from "dayjs";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import bell from "../../static/icons/bell.svg";
+import close from "../../static/icons/close.svg";
+import plus from "../../static/icons/plus.svg";
 import axios from "axios";
 import { Modal } from "../Modal";
+import { useDispatch } from "react-redux";
+import { deleteCompItem, updateMemo } from "../../reducers/comp";
+import { useNavigate } from "react-router-dom";
 
 function getList(compList) {
   switch (compList.length) {
@@ -43,23 +47,49 @@ function getList(compList) {
 const DefaultList = () => {
   return (
     <li className="default">
-      <img src={bell} alt="add" />
+      <img src={plus} alt="add" />
     </li>
   );
 };
 
 const List = ({ item }) => {
-  const [text, setText] = useState("");
+  const { text } = useSelector(state => state.comp);
+  const dispatch = useDispatch();
 
-  const handleText = e => {
-    setText(e.target.value);
+  const handleText = useCallback(
+    async e => {
+      dispatch(updateMemo(e.target.value));
+    },
+    [text]
+  );
+
+  useEffect(() => {
+    axios.post(`https://saramserver.herokuapp.com/memo/${item.id}`, {
+      text: text,
+    });
+  }, [text, item]);
+
+  const deleteComp = () => {
+    dispatch(deleteCompItem(item));
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(
+        `https://saramserver.herokuapp.com/memo/${item.id}`
+      );
+
+      dispatch(updateMemo(response.data.text));
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <li>
       <div className="header">
         <h3 className="company-name">{item.company.detail.name}</h3>
-        <img src={bell} alt="close" />
+        <img src={close} alt="close" onClick={deleteComp} />
       </div>
       <strong className="job">{item.position["job-mid-code"].name}</strong>
       <div className="info">
@@ -76,7 +106,12 @@ const List = ({ item }) => {
           "MM월DD일"
         )}
       </span>
-      <input type="text" value={text} onChange={handleText} />
+      <input
+        type="text"
+        value={text}
+        onChange={handleText}
+        placeholder={text}
+      />
     </li>
   );
 };
@@ -89,13 +124,11 @@ const SideBar = () => {
   const handleToggle = () => {
     setToggle(!isToggle);
   };
+  const navigator = useNavigate();
 
-  const createListSet = useCallback(() => {
-    axios.post("https://saramserver.herokuapp.com/set/create", {
-      name: "할만한데?",
-      ids: ["50594238", "49393024", "23433334"],
-    });
-  }, []);
+  const link = () => {
+    navigator("/compare");
+  };
 
   return (
     <>
@@ -113,7 +146,9 @@ const SideBar = () => {
           <button className="save" onClick={handleToggle}>
             저장하기
           </button>
-          <button className="compare">공고 비교하기</button>
+          <button className="compare" onClick={link}>
+            공고 비교하기
+          </button>
         </div>
       </Container>
       <Modal
@@ -121,7 +156,6 @@ const SideBar = () => {
         open={isToggle}
         title="비교세트를 저장하시겠습니까?"
         subMessage="확인을 누르시면 저장되고 계속 진행합니다."
-        onClick={createListSet}
         onClose={handleToggle}
       >
         저장

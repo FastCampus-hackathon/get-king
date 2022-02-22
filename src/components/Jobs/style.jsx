@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const JobList = styled.ul`
+  margin: 0 auto;
   h2 {
     position: absolute;
     top: 135px;
@@ -15,7 +16,9 @@ export const JobList = styled.ul`
   width: 900px;
   margin-top: 30px;
   margin-left: 60px;
+  margin-bottom: 16px;
   padding: 32px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray2};
 
   li {
     cursor: pointer;
@@ -26,4 +29,4 @@ export const JobList = styled.ul`
       color: #4876ef;
     }
   }
-`
+`;

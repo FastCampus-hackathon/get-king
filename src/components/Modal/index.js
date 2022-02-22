@@ -6,6 +6,8 @@ import {
 } from "./style";
 import bell from "../../static/icons/bell.svg";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function getModalIcon(icon) {
   switch (icon) {
@@ -27,8 +29,24 @@ export const Modal = ({
   children,
 }) => {
   const { compList } = useSelector(state => state.comp);
-  const handleClick = async () => {
-    compList.length === 3 && (await onClick());
+
+  const [text, setText] = useState("");
+  const [arr, setArr] = useState([]);
+
+  const handleChange = e => {
+    setText(e.target.value);
+  };
+
+  useEffect(() => {
+    setArr(compList.map(el => el.id));
+  }, [compList]);
+
+  const createSet = async () => {
+    compList.length === 3 &&
+      (await axios.post("https://saramserver.herokuapp.com/set/create", {
+        name: text,
+        ids: arr,
+      }));
     await onClose();
   };
 
@@ -36,9 +54,16 @@ export const Modal = ({
     <ModalBackGround>
       <ModalBox>
         <ContentsWrapper>
-          <div className="icon-wrapper">{getModalIcon(icon)}</div>
+          <div className="icon-wrapper">
+            {icon && getModalIcon(icon)}
+            <input
+              className="guide"
+              type="text"
+              value={text}
+              onChange={handleChange}
+            />
+          </div>
           {title && <strong className="title">{title}</strong>}
-          {guide && <div className="guide">{guide}</div>}
           {subMessage && <span className="sub-message">{subMessage}</span>}
         </ContentsWrapper>
         <BtnWrapper className="modal__button-group">
@@ -47,7 +72,7 @@ export const Modal = ({
               닫기
             </button>
           )}
-          <button className="call-btn" onClick={handleClick}>
+          <button className="call-btn" onClick={createSet}>
             {children}
           </button>
         </BtnWrapper>
