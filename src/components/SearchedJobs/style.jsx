@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const SearchedList = styled.ul`
   border-bottom: 1px solid #141414;
-  width: 865px;
+  width: 900px;
+  margin-left: 60px;
+  margin-top: 30px;
 
   li {
-    width: 865px;
+    width: 900px;
     height: 92px;
     display: flex;
     justify-content: space-between;
@@ -18,6 +20,7 @@ export const SearchedList = styled.ul`
       .company_name {
         font-size: 14px;
         margin-bottom: 4px;
+        font-weight: 600;
       }
       .flex_wrapper {
         width: 650px;
@@ -68,9 +71,22 @@ export const SearchedList = styled.ul`
         .pick_btn {
           vertical-align: middle;
           margin-left: 8px;
-          width: 16px;
-          height: 16px;
+          width: 20px;
+          height: 20px;
         }
+      }
+
+      .loc {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        h4 {
+          margin: 0;
+        }
+      }
+
+      img {
       }
     }
   }
