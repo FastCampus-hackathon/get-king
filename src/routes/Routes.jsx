@@ -8,6 +8,7 @@ import { theme } from "../styles";
 import GlobalStyle from "../styles/globalStyle";
 import Scrap from "./Scrap";
 import Compare from "./Compare";
+import CompareList from "./CompareList";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
             <Route path="/scrap" element={<Scrap />} />
             <Route path="/compare" element={<Compare />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/compare-list" element={<CompareList />} />
           </Routes>
           <GlobalStyle />
         </ThemeProvider>
