@@ -21,14 +21,6 @@ const SearchedJobs = () => {
       {jobsData &&
         jobsData.map((job, index) => {
           const handleClick = job => {
-            if (compList.length === 3) {
-              alert("비교는 최대 3개까지 가능합니다.");
-              return;
-            }
-            const newPickedList = [...pickedList, job.id];
-            setPickedList(newPickedList);
-
-            dispatch(addCompItem(job));
             if (pickedList.includes(job.id)) {
               const newPickedList = pickedList.filter(id => {
                 return id !== job.id;
@@ -36,9 +28,14 @@ const SearchedJobs = () => {
               setPickedList(newPickedList);
               dispatch(deleteCompItem(job));
             } else {
-              const newPickedList = [...pickedList, job.id];
-              setPickedList(newPickedList);
-              dispatch(addCompItem(job));
+              if (compList.length === 3) {
+                alert("비교는 최대 3개까지 가능합니다.");
+                return;
+              } else {
+                const newPickedList = [...pickedList, job.id];
+                setPickedList(newPickedList);
+                dispatch(addCompItem(job));
+              }
             }
           };
           // console.log(job?.position.location.name);
