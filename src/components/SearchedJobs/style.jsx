@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const SearchedList = styled.ul`
-  border-bottom: 1px solid #141414;
   width: 900px;
   margin-left: 60px;
   margin-top: 30px;
