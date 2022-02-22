@@ -2,13 +2,15 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './Login'
 import Home from './Home'
+import Header from '../components/Header'
 import { ThemeProvider } from 'styled-components'
-import {theme} from '../styles'
+import { theme } from '../styles'
 import GlobalStyle from '../styles/globalStyle'
 
 const Router = () => {
   return (
     <>
+      <Header />
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <Routes>
@@ -16,7 +18,6 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
           <GlobalStyle />
-
         </ThemeProvider>
       </BrowserRouter>
     </>
