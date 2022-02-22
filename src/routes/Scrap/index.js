@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../../components/Header";
 
 const Scrap = () => {
   return (
-    <Container>
-      <div className="a"></div>
-      <div>어쩔라미</div>
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <div className="a"></div>
+        <div>어쩔라미</div>
+      </Container>
+    </>
   );
 };
 

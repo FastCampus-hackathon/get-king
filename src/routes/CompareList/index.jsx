@@ -8,6 +8,7 @@ import styled from "styled-components";
 import search from "../../static/icons/search.svg";
 import left from "../../static/icons/left.svg";
 import right from "../../static/icons/right.svg";
+import Header from "../../components/Header";
 
 function CompareList() {
   const [text, setText] = useState("");
@@ -79,65 +80,68 @@ function CompareList() {
   }, []);
 
   return (
-    <List>
-      <header>
-        <h2>공고 비교 리스트</h2>
-        <div>
+    <>
+      <Header />
+      <List>
+        <header>
+          <h2>공고 비교 리스트</h2>
           <div>
-            <img src={search} alt="" />
-            <input
-              type="text"
-              placeholder="제목을 검색할 수 있어요"
-              value={text}
-              onChange={onChange}
-            />
-          </div>
-
-          <button type="button" onClick={onDelete}>
-            삭제
-          </button>
-        </div>
-      </header>
-      <main>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <div onClick={onChoice}>
-                  <img src={allChecked ? check : unchecked} alt="" id="all" />
-                </div>
-              </th>
-              <th>순서</th>
-              <th>제목</th>
-              <th>공고 1</th>
-              <th>공고 2</th>
-              <th>공고 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            {list.map((el, i) => (
-              <CompareItem
-                key={el._id}
-                el={el}
-                i={i}
-                onChoice={onChoice}
-                setChecked={setChecked}
-                checked={checked}
+            <div>
+              <img src={search} alt="" />
+              <input
+                type="text"
+                placeholder="제목을 검색할 수 있어요"
+                value={text}
+                onChange={onChange}
               />
-            ))}
-          </tbody>
-        </table>
-      </main>
-      <footer>
-        <img src={left} alt="" />
-        <div>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-        </div>
-        <img src={right} alt="" />
-      </footer>
-    </List>
+            </div>
+
+            <button type="button" onClick={onDelete}>
+              삭제
+            </button>
+          </div>
+        </header>
+        <main>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <div onClick={onChoice}>
+                    <img src={allChecked ? check : unchecked} alt="" id="all" />
+                  </div>
+                </th>
+                <th>순서</th>
+                <th>제목</th>
+                <th>공고 1</th>
+                <th>공고 2</th>
+                <th>공고 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              {list.map((el, i) => (
+                <CompareItem
+                  key={el._id}
+                  el={el}
+                  i={i}
+                  onChoice={onChoice}
+                  setChecked={setChecked}
+                  checked={checked}
+                />
+              ))}
+            </tbody>
+          </table>
+        </main>
+        <footer>
+          <img src={left} alt="" />
+          <div>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+          </div>
+          <img src={right} alt="" />
+        </footer>
+      </List>
+    </>
   );
 }
 

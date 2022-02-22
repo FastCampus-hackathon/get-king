@@ -3,8 +3,10 @@ import { Head } from "./style";
 import logo from "../../static/icons/logo.svg";
 import bell from "../../static/icons/bell.svg";
 import avatar from "../../static/images/avatar.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <Head>
       <div>
@@ -46,7 +48,13 @@ function Header() {
 
       <div>
         {localStorage.getItem("user") !== "true" ? (
-          <a href="/login">로그인</a>
+          <p
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            로그인
+          </p>
         ) : (
           <strong>
             <img src={avatar} alt="" />

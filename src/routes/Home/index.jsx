@@ -1,20 +1,24 @@
-import React from "react"
-import Departments from "../../components/Departments"
-import SideBar from "../../components/SideBar"
-import Search from "../../components/Search"
-import styled from "styled-components"
+import React from "react";
+import Departments from "../../components/Departments";
+import SideBar from "../../components/SideBar";
+import Search from "../../components/Search";
+import styled from "styled-components";
+import Header from "../../components/Header";
 
 function Home() {
   return (
-    <Container>
-      <Search />
-      <Departments />
-      <SideBar />
-    </Container>
-  )
+    <>
+      <Header />
+      <Container>
+        <Search />
+        <Departments />
+        <SideBar />
+      </Container>
+    </>
+  );
 }
 
-export default Home
+export default Home;
 
 const Container = styled.div`
   max-width: 1160px;
@@ -29,4 +33,4 @@ const Container = styled.div`
       height: 92px;
     }
   }
-`
+`;

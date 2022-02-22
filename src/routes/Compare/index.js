@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Header from "../../components/Header";
 
 const CompanyName = ({ item }) => {
   return <div style={{ fontSize: "16px" }}>{item.company.detail.name}</div>;
@@ -96,307 +97,314 @@ const Compare = () => {
     setText(e.target.value);
   };
   return (
-    <Container>
-      <div className="header">
-        <input
-          type="text"
-          placeholder="제목을 입력해주세요"
-          value={text}
-          onChange={handleChange}
-        />
-        <button onClick={createSet}>저장하기</button>
-      </div>
-      <div className="content">
-        <div className="name">
-          <div className="title">
-            <h3>기업명</h3>
-            <span>homepage</span>
-          </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <CompanyName item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
+    <>
+      <Header />
+      <Container>
+        <div className="header">
+          <input
+            type="text"
+            placeholder="제목을 입력해주세요"
+            value={text}
+            onChange={handleChange}
+          />
+          <button onClick={createSet}>저장하기</button>
+        </div>
+        <div className="content">
+          <div className="name">
+            <div className="title">
+              <h3>기업명</h3>
+              <span>homepage</span>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => (
                   <CompanyName item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <CompanyName item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
+                ))
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <CompanyName item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <CompanyName item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>직무</h3>
+          <div className="name">
+            <div className="title">
+              <h3>직무</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <Job item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Job item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Job item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <Job item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Job item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Job item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>산업분야</h3>
+          <div className="name">
+            <div className="title">
+              <h3>산업분야</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <Industry item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Industry item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Industry item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <Industry item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Industry item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Industry item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>경력조건</h3>
-          </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <Experience item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
+          <div className="name">
+            <div className="title">
+              <h3>경력조건</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => (
                   <Experience item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Experience item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
+                ))
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Experience item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Experience item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>지역</h3>
+          <div className="name">
+            <div className="title">
+              <h3>지역</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <Location item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Location item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Location item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <Location item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Location item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Location item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>마감일</h3>
+          <div className="name">
+            <div className="title">
+              <h3>마감일</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <ItemDate item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <ItemDate item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <ItemDate item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <ItemDate item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <ItemDate item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <ItemDate item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>연봉</h3>
+          <div className="name">
+            <div className="title">
+              <h3>연봉</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <Salary item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Salary item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <Salary item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <Salary item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Salary item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <Salary item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>메모</h3>
+          <div className="name">
+            <div className="title">
+              <h3>메모</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <ItemMemo item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <ItemMemo item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <ItemMemo item={item} key={idx} />
+                  ))}
+                  <div></div>
+                  <div></div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
+            </div>
           </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <ItemMemo item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <ItemMemo item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <ItemMemo item={item} key={idx} />
-                ))}
-                <div></div>
-                <div></div>
-              </>
-            ) : (
-              <>
-                <div></div>
-                <div></div>
-                <div></div>
-              </>
-            )}
-          </div>
-        </div>
 
-        <div className="name">
-          <div className="title">
-            <h3>상세 페이지</h3>
-          </div>
-          <div className="comp">
-            {compList.length === 3 ? (
-              compList.map((item, idx) => <URL item={item} key={idx} />)
-            ) : compList.length === 2 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <URL item={item} key={idx} />
-                ))}
-                <div></div>
-              </>
-            ) : compList.length === 1 ? (
-              <>
-                {compList.map((item, idx) => (
-                  <URL item={item} key={idx} />
-                ))}
-                <div className="url"></div>
-                <div className="url"></div>
-              </>
-            ) : (
-              <>
-                <div className="url"></div>
-                <div className="url"></div>
-                <div className="url"></div>
-              </>
-            )}
+          <div className="name">
+            <div className="title">
+              <h3>상세 페이지</h3>
+            </div>
+            <div className="comp">
+              {compList.length === 3 ? (
+                compList.map((item, idx) => <URL item={item} key={idx} />)
+              ) : compList.length === 2 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <URL item={item} key={idx} />
+                  ))}
+                  <div></div>
+                </>
+              ) : compList.length === 1 ? (
+                <>
+                  {compList.map((item, idx) => (
+                    <URL item={item} key={idx} />
+                  ))}
+                  <div className="url"></div>
+                  <div className="url"></div>
+                </>
+              ) : (
+                <>
+                  <div className="url"></div>
+                  <div className="url"></div>
+                  <div className="url"></div>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </>
   );
 };
 
