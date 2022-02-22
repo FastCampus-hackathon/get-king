@@ -121,7 +121,7 @@ const SideBar = () => {
         open={isToggle}
         title="비교세트를 저장하시겠습니까?"
         subMessage="확인을 누르시면 저장되고 계속 진행합니다."
-        onClick={handleToggle}
+        onClick={createListSet}
         onClose={handleToggle}
       >
         저장

@@ -5,6 +5,7 @@ import {
   BtnWrapper,
 } from "./style";
 import bell from "../../static/icons/bell.svg";
+import { useSelector } from "react-redux";
 
 function getModalIcon(icon) {
   switch (icon) {
@@ -25,6 +26,12 @@ export const Modal = ({
   onClick,
   children,
 }) => {
+  const { compList } = useSelector(state => state.comp);
+  const handleClick = async () => {
+    compList.length === 3 && (await onClick());
+    await onClose();
+  };
+
   return open ? (
     <ModalBackGround>
       <ModalBox>
@@ -40,7 +47,7 @@ export const Modal = ({
               닫기
             </button>
           )}
-          <button className="call-btn" onClick={onClick}>
+          <button className="call-btn" onClick={handleClick}>
             {children}
           </button>
         </BtnWrapper>
