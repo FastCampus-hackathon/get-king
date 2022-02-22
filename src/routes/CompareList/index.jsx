@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from "react";
 
 function CompareList() {
-  const [text, setText] = useState('')
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
+  const [text, setText] = useState("");
+  const onChange = e => {
+    setText(e.target.value);
+  };
 
   return (
     <div>
@@ -32,7 +32,7 @@ function CompareList() {
         </dl>
       </main>
     </div>
-  )
+  );
 }
 
-export default CompareList
+export default CompareList;
