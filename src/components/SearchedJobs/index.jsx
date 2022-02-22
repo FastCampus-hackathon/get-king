@@ -8,7 +8,7 @@ import styled from "styled-components";
 import bell from "../../static/icons/bell.svg";
 import unpicked from "../../static/icons/unpicked.png";
 import { useDispatch } from "react-redux";
-import { addCompItem } from "../../reducers/comp";
+import { addCompItem, deleteCompItem } from "../../reducers/comp";
 
 const SearchedJobs = () => {
   const [pickedList, setPickedList] = useState([]);
