@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
-import { SearchEngine } from './style'
-import search from '../../static/icons/search.svg'
-import axios from 'axios'
+import React, { useState } from "react";
+import { SearchEngine } from "./style";
+import search from "../../static/icons/search.svg";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAnnouncement } from "../../reducers/announcement";
 
 function Search() {
-  const [text, setText] = useState('')
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
+  const dispatch = useDispatch();
+  const [text, setText] = useState("");
+  const onChange = e => {
+    setText(e.target.value);
+  };
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
+  const onSubmit = async e => {
+    e.preventDefault();
     const {
       data: {
         jobs: { job },
       },
-    } = await axios.get(`https://saramserver.herokuapp.com/saram/job/${text}`)
-    console.log(job)
-  }
+    } = await axios.get(`https://saramserver.herokuapp.com/saram/job/${text}`);
+
+    dispatch(setAnnouncement(job));
+  };
 
   return (
     <SearchEngine>
@@ -36,7 +40,7 @@ function Search() {
         <li>지역별</li>
       </ul>
     </SearchEngine>
-  )
+  );
 }
 
-export default Search
+export default Search;

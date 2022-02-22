@@ -1,11 +1,13 @@
-import React from "react"
-import dayjs from "dayjs"
-import "dayjs/locale/ko"
-import { SearchedList } from "./style"
+import React from "react";
+import dayjs from "dayjs";
+import "dayjs/locale/ko";
+import { SearchedList } from "./style";
+import { useSelector } from "react-redux";
 
-const SearchedJobs = ({ jobsData }) => {
-  console.log("잡데이터: ", jobsData)
-  dayjs.locale("ko")
+const SearchedJobs = () => {
+  const jobsData = useSelector(state => state.announcement.announcement);
+  console.log("잡데이터: ", jobsData);
+  dayjs.locale("ko");
   return (
     <SearchedList>
       {jobsData &&
@@ -35,10 +37,10 @@ const SearchedJobs = ({ jobsData }) => {
                 </h4>
               </div>
             </li>
-          )
+          );
         })}
     </SearchedList>
-  )
-}
+  );
+};
 
-export default SearchedJobs
+export default SearchedJobs;
