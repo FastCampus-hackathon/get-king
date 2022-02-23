@@ -443,7 +443,7 @@ const Compare = () => {
               className={memo ? "title clicked" : "title"}
               onClick={changeMemo}
             >
-              <h3>메모</h3>
+              <h3>한 줄 메모</h3>
               <img src={mark} alt="icon" />
             </div>
             <div className="comp">
@@ -621,6 +621,7 @@ const Container = styled.div`
           display: flex;
           align-items: center;
           padding: 0 32px;
+          border: 1px solid ${({ theme }) => theme.colors.gray3};
           flex: 1;
           &.url {
             font-weight: 600;
