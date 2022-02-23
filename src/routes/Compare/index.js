@@ -152,7 +152,14 @@ const Compare = () => {
   const [arr, setArr] = useState([]);
 
   useEffect(() => {
-    setArr(compList.map(el => el.id));
+    setArr(
+      compList.map(el => {
+        return {
+          id: el.id,
+          name: el.company.detail.name,
+        };
+      })
+    );
   }, [compList]);
 
   const navigate = useNavigate();
@@ -561,7 +568,6 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 32px;
     .name {
       width: 100%;
       input {
@@ -581,15 +587,16 @@ const Container = styled.div`
       }
       .title {
         display: flex;
+        border: 1px solid ${({ theme }) => theme.colors.gray2};
         justify-content: center;
         align-items: center;
         height: 60px;
         background-color: ${({ theme }) => theme.colors.gray4};
 
         &.input {
-          border: 1px solid ${({ theme }) => theme.colors.gray2};
           border-radius: 8px;
           background-color: ${({ theme }) => theme.colors.gray4};
+          margin-bottom: 32px;
         }
 
         &.clicked {
@@ -642,7 +649,8 @@ const Container = styled.div`
           justify-content: center;
           align-items: flex-start;
           padding: 0 32px;
-          border: 1px solid ${({ theme }) => theme.colors.gray3};
+          border-right: 1px solid ${({ theme }) => theme.colors.gray3};
+          border-left: 1px solid ${({ theme }) => theme.colors.gray3};
           flex: 1;
           gap: 8px;
 
