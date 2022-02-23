@@ -163,8 +163,6 @@ const Compare = () => {
         name: text,
         ids: arr,
       }));
-
-    navigate("/compare-list");
   };
 
   const handleChange = e => {
@@ -176,7 +174,14 @@ const Compare = () => {
       <Container>
         <div className="header">
           <h2>공고항목별 비교</h2>
-          <button onClick={createSet}>저장하기</button>
+          <button
+            onClick={() => {
+              createSet();
+              navigate("/compare-list");
+            }}
+          >
+            저장하기
+          </button>
         </div>
 
         <div className="content">
