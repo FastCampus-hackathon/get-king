@@ -95,8 +95,8 @@ const List = ({ item }) => {
         <span className="condition">{item.position["job-type"].name}</span>
         <span className="location">
           {item.position.location.name
-            .replace(/&lt;/g, "")
-            .replace(/&gt;/g, "")}
+            ?.replace(/&lt;/g, "")
+            ?.replace(/&gt;/g, "")}
         </span>
       </div>
       <span className="date">

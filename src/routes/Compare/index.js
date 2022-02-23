@@ -35,7 +35,7 @@ const Experience = ({ item }) => {
 const Location = ({ item }) => {
   return (
     <div style={{ fontSize: "16px" }}>
-      {item.position.location.name.replace(/&lt;/g, "").replace(/&gt;/g, "")}
+      {item.position.location.name?.replace(/&lt;/g, "")?.replace(/&gt;/g, "")}
     </div>
   );
 };
