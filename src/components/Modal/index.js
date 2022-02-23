@@ -38,7 +38,14 @@ export const Modal = ({
   };
 
   useEffect(() => {
-    setArr(compList.map(el => el.id));
+    setArr(
+      compList.map(el => {
+        return {
+          id: el.id,
+          name: el.company.detail.name,
+        };
+      })
+    );
   }, [compList]);
 
   const createSet = async () => {
