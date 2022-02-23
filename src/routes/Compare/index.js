@@ -49,7 +49,16 @@ const ItemDate = ({ item }) => {
 };
 
 const Salary = ({ item }) => {
-  return <div style={{ fontSize: "16px" }}>{item.salary.name}</div>;
+  const [text, setText] = useState("");
+  const handleText = useCallback(e => {
+    setText(e.target.value);
+  }, []);
+  return (
+    <div className="sal" style={{ fontSize: "16px" }}>
+      {item.salary.name}
+      <input className="sal" type={text} value={text} onChange={handleText} />
+    </div>
+  );
 };
 
 const ItemMemo = ({ item }) => {
@@ -615,14 +624,27 @@ const Container = styled.div`
           font-size: 16px;
           font-weight: 400;
           margin: 0;
+
+          &.sal {
+            height: 28px;
+            font-size: 14px;
+          }
         }
 
         div {
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
           padding: 0 32px;
           border: 1px solid ${({ theme }) => theme.colors.gray3};
           flex: 1;
+          gap: 8px;
+
+          &.sal {
+            height: 80px;
+          }
+
           &.url {
             font-weight: 600;
             line-height: 2;
